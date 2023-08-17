@@ -1,5 +1,7 @@
 package com.afs.tdd;
 
+import java.util.List;
+
 public class MarsRover {
     private Location location;
 
@@ -21,7 +23,7 @@ public class MarsRover {
         }
     }
 
-    public void executeRightCommand(Command givenCommand){
+    public void executeRightCommand(){
         this.location.setDirection(Direction.getAfterWestWhenTurnRight(this.location.getDirection()));
     }
 
@@ -30,7 +32,20 @@ public class MarsRover {
     }
 
 
-    public void executeLeftCommand(Command givenCommand) {
+    public void executeLeftCommand() {
         this.location.setDirection(Direction.getAfterEastWhenTurnLeft(this.location.getDirection()));
+    }
+
+
+    public void executeListOfCommands(List<Command> listCommands) {
+        listCommands.forEach(command -> {
+                    if(command.equals(Command.MOVE)){
+                        executeMoveCommand(command);
+                    }else if(command.equals(Command.RIGHT)){
+                        executeRightCommand();
+                    }else if(command.equals(Command.LEFT)){
+                        executeLeftCommand();
+                    }
+                });
     }
 }
