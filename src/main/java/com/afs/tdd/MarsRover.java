@@ -9,8 +9,7 @@ public class MarsRover {
         this.location = location;
     }
 
-    public void executeMoveCommand(Command givenCommand){
-        if(givenCommand == Command.MOVE){
+    public void executeMoveCommand(){
             if(location.getDirection() == Direction.NORTH){
                 location.setY(location.getY() + 1);
             }else if(location.getDirection() == Direction.EAST){
@@ -20,7 +19,6 @@ public class MarsRover {
             }else if(location.getDirection() == Direction.WEST){
                 location.setX(location.getX() - 1);
             }
-        }
     }
 
     public void executeRightCommand(){
@@ -38,14 +36,16 @@ public class MarsRover {
 
 
     public void executeListOfCommands(List<Command> listCommands) {
-        listCommands.forEach(command -> {
-                    if(command.equals(Command.MOVE)){
-                        executeMoveCommand(command);
-                    }else if(command.equals(Command.RIGHT)){
-                        executeRightCommand();
-                    }else if(command.equals(Command.LEFT)){
-                        executeLeftCommand();
-                    }
-                });
+        listCommands.forEach(this::givenCommands);
+    }
+
+    public void givenCommands(Command command){
+        if(command == Command.MOVE){
+            executeMoveCommand();
+        }else if(command == Command.RIGHT){
+            executeRightCommand();
+        } else if(command == Command.LEFT){
+            executeLeftCommand();
+        }
     }
 }
