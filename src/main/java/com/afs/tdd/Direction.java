@@ -8,8 +8,8 @@ public enum Direction {
         return Direction.values()[nextIndex];
     }
 
-    public Direction getNextDirectionWhenTurnLeft(Direction direction){
-        int nextIndex = (direction.ordinal() - 1) % Direction.values().length;
+    public static Direction getNextDirectionWhenTurnLeft(Direction direction){
+        int nextIndex = (direction.ordinal() - 1 + Direction.values().length) % Direction.values().length;
         return Direction.values()[nextIndex];
     }
 
@@ -20,7 +20,7 @@ public enum Direction {
         return getNextDirectionWhenTurnRight(direction);
     }
 
-    public Direction getAfterEastWhenTurnLeft(Direction direction){
+    public static Direction getAfterEastWhenTurnLeft(Direction direction){
         if(direction == EAST){
             return NORTH;
         }
