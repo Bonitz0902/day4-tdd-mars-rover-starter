@@ -21,7 +21,21 @@ public class MarsRover {
         }
     }
 
+    public void executeRightCommand(Command givenCommand){
+        if (givenCommand == Command.RIGHT) {
+            this.location.setDirection(Direction.getAfterWestWhenTurnRight(this.location.getDirection()));
+        }
+
+    }
+
     public Location getCurrentLocation(){
         return location;
+    }
+
+
+    public void executeLeftCommand(Command givenCommand) {
+        if (givenCommand == Command.LEFT) {
+            this.location.setDirection(Direction.getAfterWestWhenTurnRight(this.location.getDirection()));
+        }
     }
 }

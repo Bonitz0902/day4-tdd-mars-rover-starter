@@ -1,6 +1,8 @@
 package com.afs.tdd;
 
 public class Location {
+
+
     public void setX(int x) {
         this.x = x;
     }
@@ -30,5 +32,8 @@ public class Location {
 
     public Direction getDirection() {
         return direction;
+    }
+    public void setDirection(Direction direction){
+        this.direction = direction;
     }
 }
