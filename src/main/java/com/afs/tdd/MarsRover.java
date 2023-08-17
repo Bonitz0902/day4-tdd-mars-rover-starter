@@ -1,0 +1,23 @@
+package com.afs.tdd;
+
+import javafx.scene.web.HTMLEditorSkin;
+
+public class MarsRover {
+    private Location location;
+
+    public MarsRover(Location location){
+        this.location = location;
+    }
+
+    public void executeCommand(Command givenCommand){
+        if(givenCommand == Command.MOVE){
+            if(location.getDirection() == Direction.NORTH){
+                location.setY(location.getY() + 1);
+            }
+        }
+    }
+
+    public Location getCurrentLocation(){
+        return location;
+    }
+}
