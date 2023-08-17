@@ -3,6 +3,10 @@ package com.afs.tdd;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 class DemoTest {
     @Test
     void should_return_to_location_0_1_N_when_executeMoveCommand_given_0_0_North_and_command_move() {
@@ -67,7 +71,7 @@ class DemoTest {
         Command givenCommand = Command.RIGHT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeRightCommand(givenCommand);
+        marsRover.executeRightCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -80,7 +84,7 @@ class DemoTest {
         Command givenCommand = Command.RIGHT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeRightCommand(givenCommand);
+        marsRover.executeRightCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -93,7 +97,7 @@ class DemoTest {
         Command givenCommand = Command.RIGHT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeRightCommand(givenCommand);
+        marsRover.executeRightCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -106,7 +110,7 @@ class DemoTest {
         Command givenCommand = Command.RIGHT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeRightCommand(givenCommand);
+        marsRover.executeRightCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -120,7 +124,7 @@ class DemoTest {
         Command givenCommand = Command.LEFT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeLeftCommand(givenCommand);
+        marsRover.executeLeftCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -135,7 +139,7 @@ class DemoTest {
         Command givenCommand = Command.LEFT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeLeftCommand(givenCommand);
+        marsRover.executeLeftCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -149,7 +153,7 @@ class DemoTest {
         Command givenCommand = Command.LEFT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeLeftCommand(givenCommand);
+        marsRover.executeLeftCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
@@ -163,12 +167,26 @@ class DemoTest {
         Command givenCommand = Command.LEFT;
         MarsRover marsRover = new MarsRover(initialLocation);
 
-        marsRover.executeLeftCommand(givenCommand);
+        marsRover.executeLeftCommand();
         Location currentLocation = marsRover.getCurrentLocation();
 
         Assertions.assertEquals(0, currentLocation.getX());
         Assertions.assertEquals(0, currentLocation.getY());
         Assertions.assertEquals(Direction.NORTH, currentLocation.getDirection());
 
+    }
+
+    @Test
+    void should_return_to_location_when_executeBatchCommands_given_0_0_North_and_command_is_batch(){
+        Location initialLocation = new Location(0, 0,Direction.NORTH );
+        List<Command> listCommands = Arrays.asList(Command.MOVE,Command.LEFT,Command.MOVE,Command.RIGHT);
+        MarsRover marsRover = new MarsRover(initialLocation);
+
+        marsRover.executeListOfCommands(listCommands);
+        Location currentLocation = marsRover.getCurrentLocation();
+
+        Assertions.assertEquals(-1, currentLocation.getX());
+        Assertions.assertEquals(1, currentLocation.getY());
+        Assertions.assertEquals(Direction.NORTH, currentLocation.getDirection());
     }
 }
