@@ -2,6 +2,9 @@ package com.afs.tdd;
 
 import java.util.List;
 
+import static com.afs.tdd.Command.*;
+import static com.afs.tdd.Direction.*;
+
 public class MarsRover {
     private Location location;
 
@@ -10,19 +13,19 @@ public class MarsRover {
     }
 
     public void executeMoveCommand() {
-        if (location.getDirection() == Direction.NORTH) {
+        if (location.getDirection() == NORTH) {
             location.setY(location.getY() + 1);
-        } else if (location.getDirection() == Direction.EAST) {
+        } else if (location.getDirection() == EAST) {
             location.setX(location.getX() + 1);
-        } else if (location.getDirection() == Direction.SOUTH) {
+        } else if (location.getDirection() == SOUTH) {
             location.setY(location.getY() - 1);
-        } else if (location.getDirection() == Direction.WEST) {
+        } else if (location.getDirection() == WEST) {
             location.setX(location.getX() - 1);
         }
     }
 
     public void executeRightCommand() {
-        this.location.setDirection(Direction.getAfterWestWhenTurnRight(this.location.getDirection()));
+        this.location.setDirection(getAfterWestWhenTurnRight(this.location.getDirection()));
     }
 
     public Location getCurrentLocation() {
@@ -31,7 +34,7 @@ public class MarsRover {
 
 
     public void executeLeftCommand() {
-        this.location.setDirection(Direction.getAfterEastWhenTurnLeft(this.location.getDirection()));
+        this.location.setDirection(getAfterEastWhenTurnLeft(this.location.getDirection()));
     }
 
 
@@ -40,11 +43,11 @@ public class MarsRover {
     }
 
     public void givenCommands(Command command) {
-        if (command == Command.MOVE) {
+        if (command == MOVE) {
             executeMoveCommand();
-        } else if (command == Command.RIGHT) {
+        } else if (command == RIGHT) {
             executeRightCommand();
-        } else if (command == Command.LEFT) {
+        } else if (command == LEFT) {
             executeLeftCommand();
         }
     }
