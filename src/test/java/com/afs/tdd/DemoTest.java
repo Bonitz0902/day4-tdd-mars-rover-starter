@@ -1,5 +1,5 @@
 package com.afs.tdd;
-
+//TODO: Rename test file to reflect the name of the Class being tested. For example, this class should be named MarsRoverTest
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

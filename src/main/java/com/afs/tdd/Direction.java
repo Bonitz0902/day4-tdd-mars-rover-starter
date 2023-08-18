@@ -12,7 +12,7 @@ public enum Direction {
         int nextIndex = (direction.ordinal() - 1 + Direction.values().length) % Direction.values().length;
         return Direction.values()[nextIndex];
     }
-
+//TODO: Above functions are only accessed in this class, can be converted into private
     public static Direction getAfterWestWhenTurnRight(Direction direction) {
         if (direction == WEST) {
             return NORTH;
